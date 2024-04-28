@@ -82,8 +82,8 @@ def concat(chkLst):
 
 #Main functions
 
-def train():
-    for sen in TRAIN_SENT:
+def train(trainingSentences):
+    for sen in trainingSentences:
         procSen = processSentence(sen)
 
         for i in range(len(procSen)):
@@ -131,18 +131,18 @@ def selectValue(probs):
     return len(gradient) - 1
 
 
-def generate(startWrd):
+def generate(startWrd, matrix):
     sent = [startWrd]
 
-    if not startWrd in trainedMatrix.keys():
+    if not startWrd in matrix.keys():
         print("Starting word hasn't been learnt before")
 
     def generateRec(prevWrd):
         if len(sent) >= MAX_SENT_LIM:
             return False
         else:
-            nxtWords = trainedMatrix[prevWrd][0]
-            nextProbs = trainedMatrix[prevWrd][1]
+            nxtWords = matrix[prevWrd][0]
+            nextProbs = matrix[prevWrd][1]
 
             nxtWord = nxtWords[selectValue(nextProbs)]
             sent.append(nxtWord)
