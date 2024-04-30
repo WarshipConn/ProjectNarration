@@ -163,12 +163,17 @@ def generate(startWrd, matrix):
         return(sent)
     
 
+#Actual process
 
 train(TRAIN_SENT)
 
-START_WORD = "She"
 
-print(generate(START_WORD, trainedMatrix))
+
+START_WORDS = ("I", "He", "She", "They", "The")
+
+startWrd = START_WORDS[int(random.random() * len(START_WORDS))]
+
+print(generate(startWrd, trainedMatrix))
 
 
 
