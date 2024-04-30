@@ -136,6 +136,7 @@ def generate(startWrd, matrix):
 
     if not startWrd in matrix.keys():
         print("Starting word hasn't been learnt before")
+        return None
 
     def generateRec(prevWrd):
         if len(sent) >= MAX_SENT_LIM:
@@ -163,12 +164,11 @@ def generate(startWrd, matrix):
     
 
 
-
-train()
+train(TRAIN_SENT)
 
 START_WORD = "She"
 
-print(generate(START_WORD))
+print(generate(START_WORD, trainedMatrix))
 
 
 
