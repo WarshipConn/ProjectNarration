@@ -123,7 +123,7 @@ def selectValue(probs):
     for bound in gradient:
         total += bound
 
-        if target < total:
+        if target <= total:
             return result
         result += 1
 
