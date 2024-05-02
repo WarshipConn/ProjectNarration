@@ -82,7 +82,7 @@ def concat(chkLst):
 
 #Main functions
 
-def train(trainingSentences):
+def train(trainingSentences, targetMatrix):
     for sen in trainingSentences:
         procSen = processSentence(sen)
 
@@ -91,28 +91,27 @@ def train(trainingSentences):
             prevChk = procSen[i-1] if i > 0 else None
 
 
-            if not chk in PUNCTS and not chk in trainedMatrix.keys():
-                trainedMatrix[chk] = [[], []]
+            if not chk in PUNCTS and not chk in targetMatrix.keys():
+                targetMatrix[chk] = [[], []]
             
             if prevChk is not None:
-                #targetIndex = [trainedMatrix.keys].index(prevChk)
 
-                if chk in trainedMatrix[prevChk][0]:
-                    updatedWrdList = trainedMatrix[prevChk][0]
-                    updatedProbList = trainedMatrix[prevChk][1]
+                if chk in targetMatrix[prevChk][0]:
+                    updatedWrdList = targetMatrix[prevChk][0]
+                    updatedProbList = targetMatrix[prevChk][1]
 
                     chkIndex = updatedWrdList.index(chk)
                     updatedProbList[chkIndex] += 1
 
-                    trainedMatrix.update({prevChk : [updatedWrdList, updatedProbList]})
+                    targetMatrix.update({prevChk : [updatedWrdList, updatedProbList]})
                 else:
-                    updatedWrdList = trainedMatrix[prevChk][0]
-                    updatedProbList = trainedMatrix[prevChk][1]
+                    updatedWrdList = targetMatrix[prevChk][0]
+                    updatedProbList = targetMatrix[prevChk][1]
 
                     updatedWrdList.append(chk)
                     updatedProbList.append(1)
 
-                    trainedMatrix.update({prevChk : [updatedWrdList, updatedProbList]})
+                    targetMatrix.update({prevChk : [updatedWrdList, updatedProbList]})
 
 def selectValue(probs):
     gradient = probabilityGradient(probs)
@@ -165,7 +164,7 @@ def generate(startWrd, matrix):
 
 #Actual process
 
-train(TRAIN_SENT)
+train(TRAIN_SENT, trainedMatrix)
 
 
 
