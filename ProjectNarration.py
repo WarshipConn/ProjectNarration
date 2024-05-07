@@ -1,7 +1,8 @@
 import random
 
-MAX_SENT_LIM = 50
-PUNCTS = (".", "?", "!")
+#Constants
+MAX_SENT_LIM = 50 #Maximum allowed words in one generation to prevent possible infinite recursion
+PUNCTS = (".", "?", "!") #Currently accepted punctuations
 
 TEST_TRAIN_SENT = (
     "a b.",
@@ -9,6 +10,12 @@ TEST_TRAIN_SENT = (
     "a c."
 )
 
+#Training sentences requirements:
+#Each entry should be exactly one full sentence
+#Single independant clause only, no commas. Examples included the provided simple sentences below.
+#There are a limit to currently accepted ending punctuation, which include '.', '?', and '!'. See the PUNCTS constant tuple above.
+#Please double check for typos or weird syntax.
+#(Optional: Try to make the sentences share common words, which introduces more possible paths for the program to take, thereby improving "creativity")
 TRAIN_SENT = (
     "The cat is sleeping on the mat.",
     "I enjoy reading books in my free time.",
@@ -167,9 +174,9 @@ def generate(startWrd, matrix):
 train(TRAIN_SENT, trainedMatrix)
 
 
-
+#Make a random starting word
+#Please make sure that the starting word is included in the training sentences
 START_WORDS = ("I", "He", "She", "They", "The")
-
 startWrd = START_WORDS[int(random.random() * len(START_WORDS))]
 
 print(generate(startWrd, trainedMatrix))
