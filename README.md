@@ -9,6 +9,7 @@ This repository contains a Python file of the full program as well as a Jupyter 
 Check it out and I hope you find it interesting.
 
 Quick Bullet Point Summary by ChatGPT:
+
 -The document discusses a simple sentence generator program and its functioning.
 
 -The program picks words based on random chance, influenced by word frequencies.
