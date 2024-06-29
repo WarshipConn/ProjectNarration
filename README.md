@@ -6,7 +6,7 @@ This project is very rudimentary, as I obviously have yet to possess actual mach
 
 This repository contains a Python file of the full program as well as a Jupyter notebook detailing the thoughts behind said program.
 
-Check it out and I hope you find it interesting.
+Check it out, and I hope you find it interesting.
 
 Quick Bullet Point Summary by ChatGPT:
 
